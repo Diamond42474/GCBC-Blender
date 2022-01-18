@@ -2,12 +2,14 @@
 #include "Drink.h"
 #include "CookBook.h"
 #include <random>
+#include <time.h>
 using namespace std;
 static class Blender
 {
 public:
 	Blender() {
-		srand(5);
+		time_t t;
+		srand((unsigned)time(&t));
 	}
 	static Drink latte() {
 		Drink order = Drink();
@@ -15,7 +17,7 @@ public:
 		int numOfFlavors = rand() % 3 + 1;
 		CookBook c = CookBook();
 		for (int i = 0; i < numOfFlavors; i++) {
-			order.addFlavor(c.coffeeFlavors[rand()%c.coffeeFlavors->size()]);
+			order.addFlavor(c.coffeeFlavors[rand() % c.coffeFlavorsSize]);
 		}
 		return order;
 	}
@@ -25,7 +27,7 @@ public:
 		int numOfFlavors = rand() % 3 + 1;
 		CookBook c = CookBook();
 		for (int i = 0; i < numOfFlavors; i++) {
-			order.addFlavor(c.coffeeFlavors[rand() % c.coffeeFlavors->size()]);
+			order.addFlavor(c.coffeeFlavors[rand() % c.coffeFlavorsSize]);
 		}
 		return order;
 	}
@@ -35,7 +37,7 @@ public:
 		int numOfFlavors = rand() % 3 + 1;
 		CookBook c = CookBook();
 		for (int i = 0; i < numOfFlavors; i++) {
-			order.addFlavor(c.stampedeFlavors[rand() % c.stampedeFlavors->size()]);
+			order.addFlavor(c.stampedeFlavors[rand() % c.stampedeFlavorsSize]);
 		}
 		return order;
 	}
